@@ -35,10 +35,16 @@ defmodule Day3 do
   end
 
   def part2(nums) do
-    String.to_integer(part2_helper(nums, 11))
+    String.to_integer(part2_helper(nums, "", 11))
   end
 
-  defp part2_helper(nums, n) do
+  defp part2_helper(nums, acc, 1) do
+    # Base case: pick the largest remaining digit
+    largest = Enum.max(nums)
+    acc <> largest
+  end
+
+  defp part2_helper(nums, acc, n) do
     # looks like it'll be a similar concept, but recursive
     # needs is at least n - 11, then n - 10, then n - 9 and so on
     prefix_nums = Enum.slice(nums, 0, length(nums) - n)
@@ -50,12 +56,7 @@ defmodule Day3 do
 
     {_prefix, [_x | suffix]} = Enum.split_while(nums, fn x -> x != elem end)
 
-    # we need 1 more integer to fill, so use the previous logic
-    if n == 1 do
-      elem <> Enum.max(suffix)
-    else
-      elem <> part2_helper(suffix, n - 1)
-    end
+    part2_helper(suffix, acc <> elem, n - 1)
   end
 end
 
