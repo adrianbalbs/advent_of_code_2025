@@ -59,4 +59,3 @@ defmodule Day3 do
     part2_helper(suffix, acc <> elem, n - 1)
   end
 end
-
