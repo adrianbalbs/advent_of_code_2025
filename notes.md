@@ -14,3 +14,8 @@
 - For selecting the prefix, we must ensure that the list size for the prefix list is length(nums) - n
   where n is from 11 down to 1, otherwise, in the suffix, we won't have enough elements to pick from to form a full number
 
+# Day 4
+- Reading a 2d list is going to be super slow, since they're implemented with linked-lists, we can use a map as an alternative,
+as it is probably better for random-access
+- Elixir has list-comprehension syntax (for syntax), could be useful for similar problems
+- We can call anonymous fns recursively by passing the reference to the function as a param
